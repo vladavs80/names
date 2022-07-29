@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript code to get institution name with first capital letter</h2>
+
+<p>Please enter a string to get lower case with first big letter in the words:</p>
+
+<input type="text" id="unos" name="fname" size="70"> 
+
+<button onclick="myFunction()">Transform</button> <br>
+
+<p> If you want only with the first capital letter in the sentence
+<input type="checkbox" id="provera" name="cekiranje" value="bomba"> <br>
+<p id="ispis2">Programmed by Vladimir Vasić</p>
+</p>
+
+
+
+<p id="ispis"></p>
+
+<script>
+var provera = document.getElementById("provera");
+
+function myFunction() {
+document.getElementById("ispis").innerHTML = "";
+if (provera.checked == true)
+{
+  
+  let ntext = priprema(document.getElementById("unos").value);
+  let prvo = ntext[0];
+  prvo = prvo.toUpperCase();
+  let drugo = ntext.substring(1);
+  ntext = prvo+drugo;
+  document.getElementById("ispis").innerHTML = ntext;
+}
+else
+{
+
+  let ntext = priprema(document.getElementById("unos").value);
+  
+  const strToArr = ntext.split(' ');
+  const allFirstToUC = strToArr.map(word => word[0].toUpperCase() + word.substring(1));
+  const newStr = allFirstToUC.join(' ');
+  document.getElementById("ispis").innerHTML = newStr;
+}
+}
+
+function priprema(ulaz)
+{
+let ntext = ulaz.trim();
+  
+  do {
+  ntext = ntext.replace(/  /g," ");
+  }
+  while(ntext.indexOf("  ") > -1);
+  
+  ntext = ntext.toLowerCase();
+  return ntext;
+}
+</script>
+
+</body>
+</html>
+
+
+
